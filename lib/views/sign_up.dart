@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mufirebase/helper/auth_helper.dart';
 import 'package:mufirebase/views/sign_in.dart';
 
 class SignUp extends StatelessWidget {
@@ -18,7 +19,12 @@ class SignUp extends StatelessWidget {
             TextField(
               controller: _passController,
             ),
-            TextButton(onPressed: (){}, child: Text("Sign Up")),
+            TextButton(onPressed: (){
+              final userEmail = _emailController.text;
+              final userPass = _passController.text;
+              var obj = AuthHelper();
+              obj.signUp(userEmail, userPass, context);
+            }, child: Text("Sign Up")),
             TextButton(onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn())), child: Text("Already have an account? Login")),
           ],
         ),
