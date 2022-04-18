@@ -23,9 +23,10 @@ class SignIn extends StatelessWidget {
               final userEmail = _emailController.text;
               final userPass = _passController.text;
               var obj = AuthHelper();
-              obj.signIn(userEmail, userPass, context);
+              // obj.signIn(userEmail, userPass, context);
             }, child: Text("Sign In")),
             TextButton(onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUp())), child: Text("Don't have any account? SignUp")),
+            ElevatedButton(onPressed: (){}, child: Text("Log in with google"))
           ],
         ),
       ),
