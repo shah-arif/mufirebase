@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mufirebase/views/home_screen2.dart';
+import 'package:mufirebase/views/home_screen3.dart';
 import 'package:mufirebase/views/recommended.dart';
 import 'package:mufirebase/views/sign_up.dart';
 import 'package:mufirebase/views/splash_screen.dart';
@@ -33,7 +34,10 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen2(),
+      home:
+      // HomeScreen(),
+      // HomeScreen2(),
+      HomeScreen3(),
       routes: {
         'recommended':(context) => Recommended()
       },
