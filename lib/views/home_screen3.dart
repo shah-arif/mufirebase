@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mufirebase/views/add_new_course.dart';
+import 'package:mufirebase/views/update_course.dart';
 
 class HomeScreen3 extends StatefulWidget {
   const HomeScreen3({Key? key}) : super(key: key);
@@ -19,6 +20,10 @@ class _HomeScreen3State extends State<HomeScreen3> {
   Future <void> deleteCourse(selectDocument)async{
     return FirebaseFirestore.instance.collection('courses').doc(selectDocument).delete().then((value) => print("course has been deleted")).catchError((error)=>print(error));
   }
+  Future <void> updateCourse(selectDocumentId,title,description,img)async{
+    return showModalBottomSheet(backgroundColor: Colors.transparent,isScrollControlled: true,context: context, builder: (context)=>UpdateCourse(selectDocumentId,title,description,img));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,7 +62,7 @@ class _HomeScreen3State extends State<HomeScreen3> {
                 Positioned(child: Container(
                   child: Row(
                     children: [
-                      IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
+                      IconButton(onPressed: ()=>updateCourse(document.id,data['course_name'],data['course_description'],data['img']), icon: Icon(Icons.edit)),
                       IconButton(onPressed: ()=>deleteCourse(document.id), icon: Icon(Icons.remove)),
                     ],
                   ),
